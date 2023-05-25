@@ -1,10 +1,10 @@
 from Funciones import *
 
 if __name__ == "__main__":
-    l = [54631974]
 
-    l[0] = Empleado("Alex Ernst", 54631974, "Jefe de sector", 0, None)
-    print(l[0].cargo)
+    test = [54631974]
+    test[0] = Empleado("Alex Ernst", 54631974, "Jefe de sector", 0, None)
+
 
     while True:
         print(Empleado.dict_empleados)
