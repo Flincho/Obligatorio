@@ -124,3 +124,104 @@ def alta_de_empleado():
     print("#" * len(mensaje))
 
     return True
+
+
+def alta_de_sector():
+
+    while True:
+        print("\n0- Cancelar")
+        nombre = input("Ingrese nombre del sector: ")
+
+        if nombre == "0":
+            print("\nAlta de sector cancelada\n")
+            return False
+
+        if nombre == "":
+            print("Nombre inválido")
+            continue
+
+
+
+        nombre = Sector(nombre)
+        print(list(Sector.dict_sectores.keys()))
+
+        mensaje = f"Sector {nombre.nombre} dado de alta con éxito"
+        print("\n" + "#" * len(mensaje))
+        print(mensaje)
+        print("#" * len(mensaje))
+
+        break
+
+    an = input("""\n1- Asignar empleados al nuevo sector\nCualquier otra tecla para terminar\n""")
+    if an == "1":
+        asignar_empleado_a_sector(nombre)
+
+
+def asignar_empleado_a_sector(sector = None):
+
+    while True:
+        while True:
+            print("\n0- Cancelar")
+            ci = input("Ingrese CI: ")
+
+            if ci == "0":
+                print("\nAsignación  cancelada\n")
+                return False
+
+            if len(ci) != 8 or not ci.isdigit():
+                print("CI inválida")
+                continue
+
+            ci = int(ci)
+
+            if ci not in Empleado.dict_empleados.keys():
+                print("No existe un empleado con esa CI")
+                continue
+
+            break
+
+        if sector == None:
+            while True:
+                print("\n0- Cancelar")
+
+                for i in range(len(Sector.dict_sectores.keys())):
+                    print(f"{i+1}- {list(Sector.dict_sectores.keys())[i]}")
+
+                sector = input("Seleccione sector: ")
+
+                if sector == "0":
+                    print("\nAsignación cancelada\n")
+                    return False
+
+                if sector == "":
+                    print("Selección inválida")
+                    continue
+
+                if float(sector) in range(1, len(Sector.dict_sectores)+1):
+                    sector = list(Sector.dict_sectores.keys())[int(sector)-1]
+                    sector = Sector.dict_sectores[sector]
+                    break
+
+                print("Selección inválida")
+
+        if ci in list(sector.empleados):
+            print("El empleado ya pertenece a ese sector")
+            return False
+
+        an = sector.set_empleado(Empleado.dict_empleados[ci])
+        print(an)
+
+        empleado = Empleado.dict_empleados[ci]
+
+        mensaje = f"Empleado {empleado.nombre} ({ci}) asignado al sector {sector.nombre} como {empleado.cargo}"
+        print("\n" + "#" * len(mensaje))
+        print(mensaje)
+        print("#" * len(mensaje))
+
+        a = input("""\n1- Asignar otro empleado\nCualquier otra tecla para terminar\n""")
+
+        if a == "1":
+            continue
+
+        break
+

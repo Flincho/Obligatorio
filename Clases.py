@@ -6,6 +6,7 @@ class Empleado:
         self.cargo = cargo
         self.salario = salario
         self.supervisor = supervisor
+        self.sector = None
         Empleado.dict_empleados[self.ci] = self
 
     dict_empleados = {}
@@ -21,9 +22,26 @@ class Sector:
 
         # Se podría usar un diccionario para guardar los puntos par año y mes
         self.puntos = []
-        Sector.lista_sectores.append(self)
+        Sector.dict_sectores[self.nombre] = self
 
-    lista_sectores = []
+    dict_sectores = {}
+
+    nombre_empresa = "Flin Design"
+
+    def set_empleado(self, empleado):
+        self.empleados.append(empleado)
+
+        if empleado.cargo == "Jefe de sector":
+            if self.jefe == None:
+                self.jefe = empleado
+                return "\nJefe de sector establecido"
+
+            self.jefe = empleado
+            return "\nJefe de sector modificado"
+
+        if empleado.cargo == "Team leader":
+            self.team_leaders.append(empleado)
+            return "\nNuevo Team leader"
 
 
 class Equipo:
