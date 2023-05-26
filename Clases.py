@@ -19,9 +19,7 @@ class Sector:
         self.jefe = None
         self.team_leaders = []
         self.empleados = []
-
-        # Se podría usar un diccionario para guardar los puntos par año y mes
-        self.puntos = []
+        self.puntos = {}
         Sector.dict_sectores[self.nombre] = self
 
     dict_sectores = {}
@@ -32,7 +30,7 @@ class Sector:
         self.empleados.append(empleado)
 
         if empleado.cargo == "Jefe de sector":
-            if self.jefe == None:
+            if self.jefe is None:
                 self.jefe = empleado
                 return "\nJefe de sector establecido"
 
@@ -42,6 +40,17 @@ class Sector:
         if empleado.cargo == "Team leader":
             self.team_leaders.append(empleado)
             return "\nNuevo Team leader"
+
+    def set_puntos(self, año, mes, nuevos_puntos):
+
+        if año not in self.puntos.keys():
+            self.puntos[año] = {}
+
+        if mes not in self.puntos[año].keys():
+            self.puntos[año][mes] = 0
+
+        self.puntos[año][mes] += nuevos_puntos
+        print(self.puntos[año][mes])
 
 
 class Equipo:
