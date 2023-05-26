@@ -8,7 +8,8 @@ class Empleado:
         self.supervisor = supervisor
         self.sector = None
         Empleado.dict_empleados[self.ci] = self
-
+    
+    #diccionario que guarda todos los empleados, llave: ci, valor: objeto empleado
     dict_empleados = {}
 
     def __str__(self):
@@ -24,7 +25,7 @@ class Sector:
         self.empleados = []
         self.puntos = {}
         Sector.dict_sectores[self.nombre] = self
-
+#Jefe como none porque hay uno solo, team leaders como lista porque puede haber mas de uno
     dict_sectores = {}
 
     nombre_empresa = "Flin Design"
@@ -57,7 +58,7 @@ class Sector:
     def get_puntos(self, año, mes):
 
         if año not in self.puntos.keys():
-            self.puntos[año] = {}
+            return 0
 
         if mes == "13":
             return sum(self.puntos[año].values())

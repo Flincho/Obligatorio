@@ -4,7 +4,7 @@ from Funciones import *
 def asignar_empleado_a_sector(sector=None):
     clear()
     print("Asignación de empleado a sector\n")
-
+#keys devuelve solo las llaves del diccionario
     if len(Empleado.dict_empleados.keys()) == 0:
         print("No hay empleados registrados\n")
         return False
@@ -22,17 +22,17 @@ def asignar_empleado_a_sector(sector=None):
                 clear()
                 print("Asignación  cancelada\n")
                 return False
-
+#isdigit devuelve true si todos los caracteres son numeros
             if len(ci) != 8 or not ci.isdigit():
                 print("CI inválida")
                 continue
-
+#poner int para que sea un numero, no un string
             ci = int(ci)
 
             if ci not in Empleado.dict_empleados.keys():
                 print("No existe un empleado con esa CI")
                 continue
-
+#continue vuelve al while
             break
 
         if sector is None:

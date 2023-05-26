@@ -313,7 +313,7 @@ def aumento_de_salario_empleado():
         break
     clear()
     print(f"\nAumento de salario para {empleado.nombre} ({empleado.ci}):")
-    print(f"${empleado.salario} -----> ${round(empleado.salario * 1.15)}\n\n")
+    print(f"${round(empleado.salario)} -----> ${round(empleado.salario * 1.15)}\n\n")
 
 
 def aumento_de_salario_sector():
@@ -336,5 +336,5 @@ def aumento_de_salario_sector():
 
     clear()
 
-    print(f"\nSalario total del sector {sector.nombre}: ${salario_total}")
+    print(f"\nSalario total del sector {sector.nombre}: ${round(salario_total)}")
     print(f"Salario total del sector {sector.nombre} con aumento: ${round(salario_total * 1.15)}\n\n")
