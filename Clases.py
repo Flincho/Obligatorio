@@ -11,6 +11,9 @@ class Empleado:
 
     dict_empleados = {}
 
+    def __str__(self):
+        return f"{self.nombre} ({self.ci}) {self.cargo} - ${self.salario}"
+
 
 class Sector:
 
@@ -50,16 +53,16 @@ class Sector:
             self.puntos[año][mes] = 0
 
         self.puntos[año][mes] += nuevos_puntos
-        print(self.puntos[año][mes])
 
+    def get_puntos(self, año, mes):
 
-class Equipo:
+        if año not in self.puntos.keys():
+            self.puntos[año] = {}
 
-    def __init__(self, sector) -> None:
-        self.sector = sector
-        self.team_leader = None
-        self.empleados = []
-        self.puntos = 0
-        Equipo.lista_equipos.append(self)
+        if mes == "13":
+            return sum(self.puntos[año].values())
 
-    lista_equipos = []
+        if mes not in self.puntos[año].keys():
+            self.puntos[año][mes] = 0
+
+        return self.puntos[año][mes]
