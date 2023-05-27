@@ -14,8 +14,8 @@ def cantidad_de_empleados():
         return False
 
     while True:
-        print("Sectores:")
         print("\n0- Cancelar")
+        print("Sectores:")
 
         for i in range(len(Sector.dict_sectores.keys())):
             print(f"{i + 1}- {list(Sector.dict_sectores.keys())[i]}")
@@ -48,11 +48,11 @@ def cantidad_de_empleados():
     while True:
         print("\n0- Cancelar")
         print("""Cargos:
-        1- Analista en sistemas
-        2- Desarrollador full stack
-        3- Team leader
-        4- Jefe de sector
-        5- Todos los cargos""")
+1- Analista en sistemas
+2- Desarrollador full stack
+3- Team leader
+4- Jefe de sector
+5- Todos los cargos""")
 
         cargo = input("Seleccione cargo: ")
 

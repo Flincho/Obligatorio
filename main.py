@@ -5,6 +5,7 @@ from Otorgar_puntos import *
 from Consultas import *
 
 if __name__ == "__main__":
+    tests()
     clear()
     print(f"Bienvenido al software de gestión de {Sector.nombre_empresa.upper()}\n")
 
@@ -12,12 +13,12 @@ if __name__ == "__main__":
 
         print("0- Cerrar programa")
         print("""Opciones:
-        1- Alta de empleado
-        2- Alta de sector
-        3- Asignar empleado a sector
-        4- Otorgar puntos a sector
-        5- Realizar consultas
-        """)
+    1- Alta de empleado
+    2- Alta de sector
+    3- Asignar empleado a sector
+    4- Otorgar puntos a sector
+    5- Realizar consultas
+    """)
 
         op = input("Ingrese una opción: ")
 
@@ -55,11 +56,11 @@ if __name__ == "__main__":
             while True:
                 print("0- Cancelar consulta")
                 print("""Consultas:
-        1- Cantidad de empleados
-        2- Ranking de puntos
-        3- Calcular aumento de sueldo para empleado de sector con más puntos
-        4- Calcular aumento de sueldos para sector
-        """)
+    1- Cantidad de empleados
+    2- Ranking de puntos
+    3- Calcular aumento de sueldo para empleado de sector con más puntos
+    4- Calcular aumento de sueldos para sector
+    """)
                 an = input("Seleccione una consulta:")
 
                 if an == "0":
