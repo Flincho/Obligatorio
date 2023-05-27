@@ -1,14 +1,16 @@
 from os import system, name
 from Clases import *
 
-#limpiar terminal segun sistema operativo
+
+# limpiar terminal según sistema operativo
 def clear():
     if name == "nt":
         system('cls')
     else:
         system("clear")
 
-#Seleccionar sectores existentes
+
+# Seleccionar sectores existentes
 def seleccionar_sector():
 
     if len(Sector.dict_sectores.keys()) == 0:
@@ -18,24 +20,24 @@ def seleccionar_sector():
     while True:
         print("\n0- Cancelar")
         print("Sectores:")
-#Imprime los sectores registrados, con su numero de orden, arranca en 1 por el i + 1
+# Imprime los sectores registrados, con su número de orden, arranca en 1 por el i + 1
         for i in range(len(Sector.dict_sectores.keys())):
             print(f"        {i + 1}- {list(Sector.dict_sectores.keys())[i]}")
 
-        sector = input("Seleccione sector: ")
+        sector = input("\nSeleccione sector: ")
 
         if sector == "0":
             clear()
             print("Acción cancelada\n")
             return False
-#Si no existe contenido,o letras, imprime seleccion invalida
+# Si no existe contenido,o letras, imprime selección invalida
         if sector == "" or not sector.isdigit():
             print("Selección inválida")
             continue
-#Sumo y resto 1 para que el numero de orden sea el mismo que el indice de la lista
+# Sumo y resto 1 para que el número de orden sea el mismo que el índice de la lista
         if int(sector) in range(1, len(Sector.dict_sectores) + 1):
             sector = list(Sector.dict_sectores.values())[int(sector) - 1]
-#Con el breake salgo del while           
+# Con el brake salgo del while
             break
 
         print("Selección inválida")
@@ -51,8 +53,8 @@ def tests():
     test[3] = Empleado("Carlos Sainz", 66666666, "Desarrollador full stack", 2200, test[1])
     gc = Sector("Gestión de calidad")
     testing = Sector("Testing")
-    testing.set_empleado(test[0])
-    testing.set_empleado(test[1])
+    # testing.set_empleado(test[0])
+    # testing.set_empleado(test[1])
     gc.set_puntos("2023", "12", 500)
     gc.set_puntos("2023", "4", 660)
     testing.set_puntos("2023", "12", 1900)

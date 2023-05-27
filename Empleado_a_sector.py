@@ -3,6 +3,11 @@ from Funciones import *
 
 def asignar_empleado_a_sector(sector=None):
     clear()
+
+    marcador = 0
+    if sector is not None:
+        marcador = 1
+
     print("Asignación de empleado a sector\n")
 #keys devuelve solo las llaves del diccionario
     if len(Empleado.dict_empleados.keys()) == 0:
@@ -24,16 +29,36 @@ def asignar_empleado_a_sector(sector=None):
                 return False
 #isdigit devuelve true si todos los caracteres son numeros
             if len(ci) != 8 or not ci.isdigit():
-                print("CI inválida")
+                print("CI inválida\n")
                 continue
-#poner int para que sea un numero, no un string
+
             ci = int(ci)
 
             if ci not in Empleado.dict_empleados.keys():
-                print("No existe un empleado con esa CI")
+                print("No existe un empleado con esa CI\n")
                 continue
 #continue vuelve al while
             break
+
+        empleado = Empleado.dict_empleados[ci]
+
+        if empleado.sector is not None:
+            print(f"\n{empleado.nombre} ({empleado.ci}) ya tiene un sector asignado: {empleado.sector.nombre}\n")
+
+            while True:
+                re = input("Desea reasignarlo?\n0- No\n1- Si\n")
+
+                if re == "0":
+                    clear()
+                    return False
+
+                if re == "1":
+                    break
+
+                print("Opción inválida\n")
+
+
+        print(f"\n{empleado.nombre} ({empleado.ci})")
 
         if sector is None:
 
@@ -45,10 +70,18 @@ def asignar_empleado_a_sector(sector=None):
             print("El empleado ya pertenece a ese sector")
             return False
 
-        an = sector.set_empleado(Empleado.dict_empleados[ci])
-        print(an)
+        if empleado.cargo != "Jefe de sector" and empleado.supervisor is not None and empleado.supervisor not in list(sector.empleados):
+            clear()
+            print("Sector incorrecto. Su supervisor no pertenece a ese sector\n")
+            if marcador == 0:
+                sector = None
+            continue
 
         empleado = Empleado.dict_empleados[ci]
+        empleado.set_sector(sector)
+
+        an = sector.set_empleado(empleado)
+        print(an)
 
         clear()
 
@@ -60,6 +93,9 @@ def asignar_empleado_a_sector(sector=None):
         a = input("""\n1- Asignar otro empleado\nCualquier otra tecla para terminar\n""")
 
         if a == "1":
+            if marcador == 0:
+                sector = None
+            clear()
             continue
 
         clear()

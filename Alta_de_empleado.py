@@ -57,12 +57,12 @@ def alta_de_empleado():
     while True:
         print("\n0- Cancelar")
         print("""Cargos:
-        1- Analista en sistemas
-        2- Desarrollador full stack
-        3- Team leader
-        4- Jefe de sector""")
+    1- Analista en sistemas
+    2- Desarrollador full stack
+    3- Team leader
+    4- Jefe de sector""")
 
-        cargo = input("Seleccione cargo: ")
+        cargo = input("\nSeleccione cargo: ")
 
         if cargo == "0":
             clear()
@@ -104,17 +104,18 @@ def alta_de_empleado():
                 continue
 
             supervisor = int(supervisor)
-            sup_obj = Empleado.dict_empleados[supervisor]
 
             if supervisor not in Empleado.dict_empleados.keys():
                 print("CI de supervisor inválida")
                 continue
 
-            if cargo == "Team leader" and sup_obj.cargo != "Jefe de sector":
+            supervisor = Empleado.dict_empleados[supervisor]
+
+            if cargo == "Team leader" and supervisor.cargo != "Jefe de sector":
                 print("La CI ingresada no es de un jefe de sector")
                 continue
 
-            if cargo == ("Analista en sistemas" or "Desarrollador full stack") and sup_obj.cargo != "Team leader":
+            if cargo == ("Analista en sistemas" or "Desarrollador full stack") and supervisor.cargo != "Team leader":
                 print("La CI ingresada no es de un team leader")
                 continue
 
@@ -126,7 +127,7 @@ def alta_de_empleado():
     ci = Empleado(nombre, ci, cargo, salario, supervisor)
 
     clear()
-#el f es un string que puede tener variables dentro
+#el f"" es un string que puede tener variables dentro
     mensaje = f"Empleado {ci.nombre} ({ci.ci}) dado de alta con éxito"
     print("\n" + "#" * len(mensaje))
     print(mensaje)

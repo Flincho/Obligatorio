@@ -13,8 +13,12 @@ class Empleado:
     dict_empleados = {}
 
     def __str__(self):
+        if self.sector is not None:
+            return f"{self.nombre} ({self.ci}) {self.cargo} - {self.sector.nombre} - ${self.salario}"
         return f"{self.nombre} ({self.ci}) {self.cargo} - ${self.salario}"
 
+    def set_sector(self, sector):
+        self.sector = sector
 
 class Sector:
 
