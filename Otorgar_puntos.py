@@ -57,14 +57,14 @@ def otorgar_puntos():
             print("\nAcción cancelada\n")
             return False
 
-        if puntos == "" or not puntos.isdigit() or int(puntos) <= 0:
+        if puntos == "" or not isfloat(puntos) or int(puntos) <= 0:
             print("Cantidad de puntos inválidos")
             continue
 
-        puntos = int(puntos)
+        puntos = float(puntos)
         break
 
-    Sector.set_puntos(sector, año, mes, puntos)
+    sector.set_puntos(año, mes, puntos)
 
     clear()
 

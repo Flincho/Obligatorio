@@ -21,7 +21,7 @@ def cantidad_de_empleados():
             print(f"{i + 1}- {list(Sector.dict_sectores.keys())[i]}")
 
         cant_sectores = len(Sector.dict_sectores.keys())
-        print(f"{cant_sectores + 1}- Todos los sectores")
+        print(f"{cant_sectores + 1}- Toda la empresa")
 
         sector = input("Seleccione sector: ")
 
@@ -227,7 +227,7 @@ def ranking_de_puntos(año=None, mes=None):
     ranking = []
 
     for sector in Sector.dict_sectores.values():
-        puntos = Sector.get_puntos(sector, año, mes)
+        puntos = sector.get_puntos(año, mes)
         el = [sector, puntos]
         ranking.append(el)
 
@@ -283,7 +283,7 @@ def aumento_de_salario_empleado():
 
     n_lista = []
     for car in range(4):
-        if car == []:
+        if list_empleados[car] == []:
             continue
         for emp in list_empleados[car]:
             n_lista.append(emp)

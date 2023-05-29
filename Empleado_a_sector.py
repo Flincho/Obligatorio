@@ -9,7 +9,7 @@ def asignar_empleado_a_sector(sector=None):
         marcador = 1
 
     print("Asignación de empleado a sector\n")
-#keys devuelve solo las llaves del diccionario
+
     if len(Empleado.dict_empleados.keys()) == 0:
         print("No hay empleados registrados\n")
         return False
@@ -27,7 +27,7 @@ def asignar_empleado_a_sector(sector=None):
                 clear()
                 print("Asignación  cancelada\n")
                 return False
-#isdigit devuelve true si todos los caracteres son numeros
+
             if len(ci) != 8 or not ci.isdigit():
                 print("CI inválida\n")
                 continue
@@ -42,7 +42,7 @@ def asignar_empleado_a_sector(sector=None):
 
         empleado = Empleado.dict_empleados[ci]
 
-        # La otra opcipon es que si ya tiene un sector asignado, cancelar la asignacion
+        # La otra opción es que si ya tiene un sector asignado, cancelar la asignación
         if empleado.sector is not None:
             print(f"\n{empleado.nombre} ({empleado.ci}) ya tiene un sector asignado: {empleado.sector.nombre}\n")
 
@@ -66,7 +66,9 @@ def asignar_empleado_a_sector(sector=None):
             if sector is False:
                 return False
 
-        if ci in list(sector.empleados):
+        print(sector)
+
+        if ci in sector.empleados:
             print("El empleado ya pertenece a ese sector")
             return False
 
@@ -78,10 +80,9 @@ def asignar_empleado_a_sector(sector=None):
             continue
 
         empleado = Empleado.dict_empleados[ci]
-        empleado.set_sector(sector)
 
-        an = sector.set_empleado(empleado)
-        print(an)
+        empleado.sector = sector
+        sector.empleados = empleado
 
         clear()
 

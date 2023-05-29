@@ -16,9 +16,9 @@ def alta_de_empleado():
 
         if nombre != "" and nombre.find(" ") != -1:
             break
-#el find con comillas es para que busque el espacio en blanco entre nombre y apellido 
+
         print("Nombre y apellido inválido\n")
-#siguiente paso si da bien
+
     while True:
         print("\n0- Cancelar")
         ci = input("Ingrese CI: ")
@@ -48,7 +48,8 @@ def alta_de_empleado():
             clear()
             print("Alta de empleado cancelada\n")
             return False
-        if salario.isdigit() and float(salario) >= 0:
+
+        if isfloat(salario) and float(salario) >= 0:
             salario = float(salario)
             break
 
@@ -120,17 +121,16 @@ def alta_de_empleado():
                 continue
 
             break
-#caso del jefe
+
     else:
         supervisor = None
-#creo objeto empleado
+
     ci = Empleado(nombre, ci, cargo, salario, supervisor)
 
     clear()
-#el f"" es un string que puede tener variables dentro
+
     mensaje = f"Empleado {ci.nombre} ({ci.ci}) dado de alta con éxito"
     print("\n" + "#" * len(mensaje))
     print(mensaje)
     print("#" * len(mensaje))
-#decorado de los #hashtag
     return True

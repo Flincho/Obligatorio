@@ -19,6 +19,10 @@ def alta_de_sector():
             print("Nombre inválido")
             continue
 
+        if nombre in Sector.dict_sectores.keys():
+            print("\nYa existe un sector con ese nombre\n")
+            continue
+
         nombre = Sector(nombre)
 
         clear()
@@ -30,7 +34,7 @@ def alta_de_sector():
 
         break
 
-    an = input("""\n1- Asignar empleados al nuevo sector\nCualquier otra tecla para terminar\n""")
+    an = input("""\n1- Asignar empleados al nuevo sector\nCualquier otra tecla para no asignar empleados\n""")
     if an == "1":
         clear()
         asignar_empleado_a_sector(nombre)

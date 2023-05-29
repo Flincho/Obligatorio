@@ -20,7 +20,7 @@ def seleccionar_sector():
     while True:
         print("\n0- Cancelar")
         print("Sectores:")
-# Imprime los sectores registrados, con su número de orden, arranca en 1 por el i + 1
+        # Imprime los sectores registrados, con su número de orden, arranca en 1 por el i + 1
         for i in range(len(Sector.dict_sectores.keys())):
             print(f"        {i + 1}- {list(Sector.dict_sectores.keys())[i]}")
 
@@ -30,18 +30,25 @@ def seleccionar_sector():
             clear()
             print("Acción cancelada\n")
             return False
-# Si no existe contenido,o letras, imprime selección invalida
+        # Si no existe contenido,o letras, imprime selección invalida
         if sector == "" or not sector.isdigit():
             print("Selección inválida")
             continue
-# Sumo y resto 1 para que el número de orden sea el mismo que el índice de la lista
+
         if int(sector) in range(1, len(Sector.dict_sectores) + 1):
             sector = list(Sector.dict_sectores.values())[int(sector) - 1]
-# Con el brake salgo del while
+            return sector
             break
 
         print("Selección inválida")
-    return sector
+
+
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
 
 
 def tests():
