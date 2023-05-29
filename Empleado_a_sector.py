@@ -42,6 +42,7 @@ def asignar_empleado_a_sector(sector=None):
 
         empleado = Empleado.dict_empleados[ci]
 
+        # La otra opcipon es que si ya tiene un sector asignado, cancelar la asignacion
         if empleado.sector is not None:
             print(f"\n{empleado.nombre} ({empleado.ci}) ya tiene un sector asignado: {empleado.sector.nombre}\n")
 
@@ -56,7 +57,6 @@ def asignar_empleado_a_sector(sector=None):
                     break
 
                 print("Opción inválida\n")
-
 
         print(f"\n{empleado.nombre} ({empleado.ci})")
 
