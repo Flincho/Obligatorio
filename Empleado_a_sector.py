@@ -72,13 +72,6 @@ def asignar_empleado_a_sector(sector=None):
             print("El empleado ya pertenece a ese sector")
             return False
 
-        if empleado.cargo != "Jefe de sector" and empleado.supervisor is not None and empleado.supervisor not in list(sector.empleados):
-            clear()
-            print("Sector incorrecto. Su supervisor no pertenece a ese sector\n")
-            if marcador == 0:
-                sector = None
-            continue
-
         empleado = Empleado.dict_empleados[ci]
 
         empleado.sector = sector

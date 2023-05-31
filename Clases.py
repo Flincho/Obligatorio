@@ -1,11 +1,10 @@
 class Empleado:
 
-    def __init__(self, nombre, ci, cargo, salario, supervisor) -> None:
+    def __init__(self, nombre, ci, cargo, salario) -> None:
         self._nombre = nombre
         self._ci = ci
         self._cargo = cargo
         self._salario = salario
-        self._supervisor = supervisor
         self._sector = None
         Empleado.dict_empleados[self.ci] = self
 
@@ -31,10 +30,6 @@ class Empleado:
     @property
     def salario(self):
         return self._salario
-
-    @property
-    def supervisor(self):
-        return self._supervisor
 
     @property
     def sector(self):

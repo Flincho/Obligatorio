@@ -39,7 +39,7 @@ def alta_de_empleado():
             continue
 
         break
-#siguiente paso
+
     while True:
         print("\n0- Cancelar")
         salario = input("Ingrese salario: ")
@@ -90,42 +90,7 @@ def alta_de_empleado():
             cargo = "Jefe de sector"
             break
 
-    if cargo != "Jefe de sector":
-        while True:
-            print("\n0- Cancelar")
-            supervisor = input("Ingrese CI del supervisor: ")
-
-            if supervisor == "0":
-                clear()
-                print("Alta de empleado cancelada\n")
-                return False
-
-            if len(supervisor) != 8 or not supervisor.isdigit():
-                print("CI de supervisor inválida")
-                continue
-
-            supervisor = int(supervisor)
-
-            if supervisor not in Empleado.dict_empleados.keys():
-                print("CI de supervisor inválida")
-                continue
-
-            supervisor = Empleado.dict_empleados[supervisor]
-
-            if cargo == "Team leader" and supervisor.cargo != "Jefe de sector":
-                print("La CI ingresada no es de un jefe de sector")
-                continue
-
-            if cargo == ("Analista en sistemas" or "Desarrollador full stack") and supervisor.cargo != "Team leader":
-                print("La CI ingresada no es de un team leader")
-                continue
-
-            break
-
-    else:
-        supervisor = None
-
-    ci = Empleado(nombre, ci, cargo, salario, supervisor)
+    ci = Empleado(nombre, ci, cargo, salario)
 
     clear()
 
