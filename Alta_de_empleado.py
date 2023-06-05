@@ -20,19 +20,11 @@ def alta_de_empleado():
         print("Nombre y apellido inválido\n")
 
     while True:
-        print("\n0- Cancelar")
-        ci = input("Ingrese CI: ")
-
-        if ci == "0":
+        ci = pedir_ci()
+        if ci is False:
             clear()
             print("Alta de empleado cancelada\n")
             return False
-
-        if len(ci) != 8 or not ci.isdigit():
-            print("CI inválida")
-            continue
-
-        ci = int(ci)
 
         if ci in Empleado.dict_empleados.keys():
             print("Ya existe un empleado con esa CI")

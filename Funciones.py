@@ -62,3 +62,20 @@ def tests():
     gc.set_puntos(12, 500)
     gc.set_puntos(4, 660)
     testing.set_puntos(12, 1900)
+
+
+def pedir_ci():
+    while True:
+        print("\n0- Cancelar")
+        ci = input("\nIngrese CI: ")
+
+        if ci == "0":
+            clear()
+            print("Acción cancelada\n")
+            return False
+
+        if len(ci) != 8 or not ci.isdigit():
+            print("CI inválida")
+            continue
+
+        return int(ci)

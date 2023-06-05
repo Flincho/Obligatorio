@@ -20,29 +20,20 @@ def asignar_empleado_a_sector(sector=None):
 
     while True:
         while True:
-            print("0- Cancelar")
-            ci = input("Ingrese CI: ")
+            ci = pedir_ci()
 
-            if ci == "0":
+            if ci == False:
                 clear()
-                print("Asignación  cancelada\n")
-                return False
-
-            if len(ci) != 8 or not ci.isdigit():
-                print("CI inválida\n")
-                continue
-
-            ci = int(ci)
+                print("Asignación de empleado cancelada\n")
 
             if ci not in Empleado.dict_empleados.keys():
                 print("No existe un empleado con esa CI\n")
                 continue
-#continue vuelve al while
+
             break
 
         empleado = Empleado.dict_empleados[ci]
 
-        # La otra opción es que si ya tiene un sector asignado, cancelar la asignación
         if empleado.sector is not None:
             print(f"\n{empleado.nombre} ({empleado.ci}) ya tiene un sector asignado: {empleado.sector.nombre}\n")
 
