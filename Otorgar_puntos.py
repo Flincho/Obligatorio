@@ -45,8 +45,8 @@ def otorgar_puntos():
             print("\nAcción cancelada\n")
             return False
 
-        if puntos == "" or not isfloat(puntos) or int(puntos) <= 0:
-            print("Cantidad de puntos inválidos")
+        if puntos == "" or not isfloat(puntos) or float(puntos) <= 0:
+            print("Cantidad de puntos inválida")
             continue
 
         puntos = float(puntos)
