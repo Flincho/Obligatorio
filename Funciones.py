@@ -1,6 +1,6 @@
 from os import system, name
-from Empleado_cl import *
-from Sector_cl import *
+from Clases.Empleado_cl import *
+from Clases.Sector_cl import *
 
 
 def clear():
@@ -19,7 +19,7 @@ def seleccionar_sector():
     while True:
         print("\n0- Cancelar")
         print("Sectores:")
-        # Imprime los sectores registrados, con su número de orden, arranca en 1 por el i + 1
+
         for i in range(len(Sector.dict_sectores.keys())):
             print(f"        {i + 1}- {list(Sector.dict_sectores.keys())[i]}")
 
@@ -29,7 +29,7 @@ def seleccionar_sector():
             clear()
             print("Acción cancelada\n")
             return False
-        # Si no existe contenido,o letras, imprime selección invalida
+
         if sector == "" or not sector.isdigit():
             print("Selección inválida")
             continue
