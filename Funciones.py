@@ -1,6 +1,6 @@
 from os import system, name
-from Empleado_cl import *
-from Sector_cl import *
+from Clases.Empleado_cl import *
+from Clases.Sector_cl import *
 
 
 def clear():
