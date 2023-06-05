@@ -53,12 +53,12 @@ def isfloat(num):
 def tests():
 
     test = [54631974, 55555555, 77777777, 66666666]
-    test[0] = Empleado("Alex Ernst", 54631974, "Jefe de sector", 70000, None)
-    test[1] = Empleado("Sol Pereira", 55555555, "Team leader", 4555, test[0])
-    test[2] = Empleado("Fernando Alonso", 77777777, "Analista en sistemas", 6000, test[1])
-    test[3] = Empleado("Carlos Sainz", 66666666, "Desarrollador full stack", 2200, test[1])
+    test[0] = Empleado("Alex Ernst", 54631974, "Jefe de sector", 70000)
+    test[1] = Empleado("Sol Pereira", 55555555, "Team leader", 4555)
+    test[2] = Empleado("Fernando Alonso", 77777777, "Analista en sistemas", 6000)
+    test[3] = Empleado("Carlos Sainz", 66666666, "Desarrollador full stack", 2200)
     gc = Sector("Gestión de calidad")
     testing = Sector("Testing")
-    gc.set_puntos("2023", "12", 500)
-    gc.set_puntos("2023", "4", 660)
-    testing.set_puntos("2023", "12", 1900)
+    gc.set_puntos(12, 500)
+    gc.set_puntos(4, 660)
+    testing.set_puntos(12, 1900)

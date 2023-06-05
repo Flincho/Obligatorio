@@ -7,10 +7,10 @@ from Consultas import *
 if __name__ == "__main__":
     tests()
     clear()
-    print(f"Bienvenido al software de gestión de {Sector.nombre_empresa.upper()}\n")
+    print(f"Bienvenido al software de gestión de {Sector.nombre_empresa.upper()}")
 
     while True:
-
+        print("\n")
         print("0- Cerrar programa")
         print("""Opciones:
     1- Alta de empleado
