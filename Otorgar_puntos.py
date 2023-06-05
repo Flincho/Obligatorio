@@ -15,20 +15,6 @@ def otorgar_puntos():
 
     print(f"\nSector {sector.nombre} seleccionado para otorgar puntos")
 
-    while True:
-        print("\n0- Cancelar")
-        año = input("Ingrese el año: ")
-
-        if año == "0":
-            clear()
-            print("\nAcción cancelada\n")
-            return False
-
-        if año == "" or not año.isdigit() or len(año) > 4 or 2023 > int(año) or int(año) > 2100:
-            print("Año inválido")
-            continue
-
-        break
 
     while True:
         print("\n0- Cancelar")
@@ -45,6 +31,8 @@ def otorgar_puntos():
 
         if mes[0] == "0":
             mes = mes[1]
+        
+        mes = int(mes)
 
         break
 
@@ -64,11 +52,11 @@ def otorgar_puntos():
         puntos = float(puntos)
         break
 
-    sector.set_puntos(año, mes, puntos)
+    sector.set_puntos(mes, puntos)
 
     clear()
 
-    mensaje = f"Se otorgaron {puntos} puntos al sector {sector.nombre} en el mes {mes} del año {año}"
+    mensaje = f"Se otorgaron {puntos} puntos al sector {sector.nombre} en el mes {mes}"
 
     print("\n" + "#" * len(mensaje))
     print(mensaje)

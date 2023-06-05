@@ -185,25 +185,10 @@ def cantidad_de_empleados():
         return True
 
 
-def ranking_de_puntos(año=None, mes=None):
+def ranking_de_puntos(mes=None):
     clear()
     print("Ranking de puntos\n")
-    if año is None:
-        while True:
-            print("\n0- Cancelar")
-            año = input("Ingrese el año: ")
-
-            if año == "0":
-                clear()
-                print("\nAcción cancelada\n")
-                return False
-
-            if año == "" or not año.isdigit() or len(año) > 4 or 2023 > int(año) or int(año) > 2100:
-                print("Año inválido")
-                continue
-
-            break
-
+    
     if mes is None:
         while True:
             print("\n0- Cancelar")
@@ -213,7 +198,7 @@ def ranking_de_puntos(año=None, mes=None):
             if mes == "0":
                 clear()
                 print("\nAcción cancelada\n")
-                return False
+                return False, 0
 
             if mes == "" or not mes.isdigit() or len(mes) > 2 or (0 > int(mes) or int(mes) > 13):
                 print("Mes inválido")
@@ -221,19 +206,21 @@ def ranking_de_puntos(año=None, mes=None):
 
             if mes[0] == "0":
                 mes = mes[1]
+            
+            mes = int(mes)
 
             break
 
     ranking = []
 
     for sector in Sector.dict_sectores.values():
-        puntos = sector.get_puntos(año, mes)
+        puntos = sector.get_puntos(mes)
         el = [sector, puntos]
         ranking.append(el)
 
     ranking.sort(key=lambda sec: sec[1], reverse=True)
 
-    return ranking, año, mes
+    return ranking, mes
 
 
 def aumento_de_salario_empleado():
@@ -244,22 +231,11 @@ def aumento_de_salario_empleado():
         print("No hay sectores registrados\n")
         return False
 
-    while True:
-        print("\n0- Cancelar")
-        año = input("Ingrese el año: ")
+    ranking, mes = ranking_de_puntos(13)
 
-        if año == "0":
-            clear()
-            print("\nAcción cancelada\n")
-            return False
+    if ranking is False:
+        return False
 
-        if año == "" or not año.isdigit() or len(año) > 4 or 2023 > int(año) or int(año) > 2100:
-            print("Año inválido")
-            continue
-
-        break
-
-    ranking, año, mes = ranking_de_puntos(año, "13")
     sector = ranking[0][0]
 
     list_empleados = [[], [], [], []]
