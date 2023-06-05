@@ -60,8 +60,6 @@ def tests():
     test[3] = Empleado("Carlos Sainz", 66666666, "Desarrollador full stack", 2200, test[1])
     gc = Sector("Gestión de calidad")
     testing = Sector("Testing")
-    # testing.set_empleado(test[0])
-    # testing.set_empleado(test[1])
     gc.set_puntos("2023", "12", 500)
     gc.set_puntos("2023", "4", 660)
     testing.set_puntos("2023", "12", 1900)

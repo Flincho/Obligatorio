@@ -86,7 +86,7 @@ class Sector:
             self._team_leaders.append(empleado)
             print("\nNuevo Team leader")
 
-    def get_puntos(self, año, mes):
+    def get_puntos(self, mes):
 
         if año not in self._puntos.keys():
             return 0
@@ -97,7 +97,7 @@ class Sector:
         if mes not in self._puntos[año].keys():
             self._puntos[año][mes] = 0
 
-        return self._puntos[año][mes]
+        return self._puntos[mes]
 
     def set_puntos(self, año, mes, nuevos_puntos):
 
