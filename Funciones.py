@@ -1,8 +1,8 @@
 from os import system, name
-from Clases import *
+from Empleado_cl import *
+from Sector_cl import *
 
 
-# limpiar terminal según sistema operativo
 def clear():
     if name == "nt":
         system('cls')
@@ -10,7 +10,6 @@ def clear():
         system("clear")
 
 
-# Seleccionar sectores existentes
 def seleccionar_sector():
 
     if len(Sector.dict_sectores.keys()) == 0:
