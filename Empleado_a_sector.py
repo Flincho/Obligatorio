@@ -8,26 +8,27 @@ def asignar_empleado_a_sector(sector=None):
     if sector is not None:
         marcador = 1
 
-    print("Asignación de empleado a sector\n")
+    print("Asignar empleado a sector\n")
 
     if len(Empleado.dict_empleados.keys()) == 0:
-        print("No hay empleados registrados\n")
+        print("\nNo hay empleados registrados\n")
         return False
 
     if len(Sector.dict_sectores.keys()) == 0:
-        print("No hay sectores registrados\n")
+        print("\nNo hay sectores registrados\n")
         return False
 
     while True:
         while True:
             ci = pedir_ci()
 
-            if ci == False:
+            if ci is False:
                 clear()
                 print("Asignación de empleado cancelada\n")
+                return False
 
             if ci not in Empleado.dict_empleados.keys():
-                print("No existe un empleado con esa CI\n")
+                print("\nNo existe un empleado con esa CI\n")
                 continue
 
             break
@@ -35,10 +36,11 @@ def asignar_empleado_a_sector(sector=None):
         empleado = Empleado.dict_empleados[ci]
 
         if empleado.sector is not None:
-            print(f"\n{empleado.nombre} ({empleado.ci}) ya tiene un sector asignado: {empleado.sector.nombre}\n")
+            print(f"\n{empleado.nombre} ({empleado.ci}) ya pertenece al sector {empleado.sector.nombre.upper()}\n")
 
             while True:
-                re = input("Desea reasignarlo?\n0- No\n1- Si\n")
+                print("Desea reasignarlo?\n0- No\n1- Si\n")
+                re = input("Ingrese opción: ")
 
                 if re == "0":
                     clear()
@@ -47,9 +49,9 @@ def asignar_empleado_a_sector(sector=None):
                 if re == "1":
                     break
 
-                print("Opción inválida\n")
+                print("\nOpción inválida\n")
 
-        print(f"\n{empleado.nombre} ({empleado.ci})")
+        print(f"\n{empleado.nombre} ({empleado.ci}) {empleado.cargo.upper()}")
 
         if sector is None:
 
@@ -63,15 +65,17 @@ def asignar_empleado_a_sector(sector=None):
             print("El empleado ya pertenece a ese sector")
             return False
 
+        clear()
+
         empleado = Empleado.dict_empleados[ci]
+        if empleado.sector is not None:
+            empleado.sector.empleados.pop(ci)
 
         empleado.sector = sector
         sector.empleados = empleado
 
-        clear()
-
         mensaje = f"Empleado {empleado.nombre} ({ci}) asignado al sector {sector.nombre} como {empleado.cargo}"
-        print("\n" + "#" * len(mensaje))
+        print("#" * len(mensaje))
         print(mensaje)
         print("#" * len(mensaje))
 

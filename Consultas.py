@@ -3,7 +3,7 @@ from Funciones import *
 
 def cantidad_de_empleados():
     clear()
-    print("Cantidad de empleados\n")
+    print("Cantidad de empleados")
 
     if len(Sector.dict_sectores.keys()) == 0:
         print("No hay sectores registrados\n")
@@ -18,16 +18,16 @@ def cantidad_de_empleados():
         print("Sectores:")
 
         for i in range(len(Sector.dict_sectores.keys())):
-            print(f"{i + 1}- {list(Sector.dict_sectores.keys())[i]}")
+            print(f"    {i + 1}- {list(Sector.dict_sectores.keys())[i]}")
 
         cant_sectores = len(Sector.dict_sectores.keys())
-        print(f"{cant_sectores + 1}- Toda la empresa")
+        print(f"    {cant_sectores + 1}- Toda la empresa")
 
-        sector = input("Seleccione sector: ")
+        sector = input("\nSeleccione sector: ")
 
         if sector == "0":
             clear()
-            print("\nConsulta cancelada\n")
+            print("Consulta cancelada\n")
             return False
 
         if sector == "" or not sector.isdigit():
@@ -48,13 +48,13 @@ def cantidad_de_empleados():
     while True:
         print("\n0- Cancelar")
         print("""Cargos:
-1- Analista en sistemas
-2- Desarrollador full stack
-3- Team leader
-4- Jefe de sector
-5- Todos los cargos""")
+    1- Analista en sistemas
+    2- Desarrollador full stack
+    3- Team leader
+    4- Jefe de sector
+    5- Todos los cargos""")
 
-        cargo = input("Seleccione cargo: ")
+        cargo = input("\nSeleccione cargo: ")
 
         if cargo == "0":
             clear()
@@ -93,7 +93,7 @@ def cantidad_de_empleados():
 
     if sector is None and cargo is None:
         clear()
-        print(f"\nHay {len(Empleado.dict_empleados.keys())} empleado/s en toda la empresa\n")
+        print(f"Hay {len(Empleado.dict_empleados.keys())} empleado/s en toda la empresa\n")
 
         for empleado in Empleado.dict_empleados.values():
             if empleado.cargo == "Jefe de sector":
@@ -130,7 +130,7 @@ def cantidad_de_empleados():
                 cant += 1
 
         clear()
-        print(f"\nHay {cant} empleado/s en toda la empresa con el cargo {cargo}\n")
+        print(f"Hay {cant} empleado/s en toda la empresa con el cargo {cargo}\n")
 
         for empleado in general:
             print(empleado)
@@ -139,7 +139,10 @@ def cantidad_de_empleados():
 
     if sector is not None and cargo is None:
         clear()
-        print(f"\nHay {len(sector.empleados)} empleado/s en el sector {sector.nombre}")
+        print(f"Hay {len(sector.empleados)} empleado/s en el sector {sector.nombre}")
+
+        if len(sector.empleados) == 0:
+            return True
 
         for empleado in sector.empleados:
             if empleado.cargo == "Jefe de sector":
@@ -154,6 +157,7 @@ def cantidad_de_empleados():
             if empleado.cargo == "Analista en sistemas":
                 analistas_en_sistemas.append(empleado)
 
+        print("")
         for empleado in jefes_de_sector:
             print(empleado)
 
@@ -165,7 +169,6 @@ def cantidad_de_empleados():
 
         for empleado in analistas_en_sistemas:
             print(empleado)
-        print("\n")
 
         return True
 
@@ -177,7 +180,7 @@ def cantidad_de_empleados():
                 cant += 1
 
         clear()
-        print(f"\nHay {cant} empleado/s en el sector {sector.nombre} con el cargo {cargo}\n")
+        print(f"Hay {cant} empleado/s en el sector {sector.nombre} con el cargo {cargo}\n")
 
         for empleado in general:
             print(empleado)
@@ -186,10 +189,10 @@ def cantidad_de_empleados():
 
 
 def ranking_de_puntos(mes=None):
-    clear()
-    print("Ranking de puntos\n")
-    
+
     if mes is None:
+        clear()
+        print("Ranking de puntos\n")
         while True:
             print("\n0- Cancelar")
             print("13- Todo el año")
@@ -197,7 +200,7 @@ def ranking_de_puntos(mes=None):
 
             if mes == "0":
                 clear()
-                print("\nAcción cancelada\n")
+                print("Acción cancelada\n")
                 return False, 0
 
             if mes == "" or not mes.isdigit() or len(mes) > 2 or (0 > int(mes) or int(mes) > 13):
@@ -206,7 +209,7 @@ def ranking_de_puntos(mes=None):
 
             if mes[0] == "0":
                 mes = mes[1]
-            
+
             mes = int(mes)
 
             break
@@ -225,7 +228,7 @@ def ranking_de_puntos(mes=None):
 
 def aumento_de_salario_empleado():
     clear()
-    print("Calcular el aumento de salario el próximo año para un empleado\n")
+    print("Calcular el aumento de salario de un empleado para el próximo año")
 
     if len(Sector.dict_sectores.keys()) == 0:
         print("No hay sectores registrados\n")
@@ -241,7 +244,7 @@ def aumento_de_salario_empleado():
     list_empleados = [[], [], [], []]
 
     if sector.empleados == []:
-        print(f"\nNo hay empleados en el sector {sector.nombre}\n")
+        print(f"No hay empleados en el sector {sector.nombre}")
         return False
 
     for empleado in sector.empleados:
@@ -272,13 +275,13 @@ def aumento_de_salario_empleado():
         print(f"Empleados del sector {sector.nombre}:")
         for empleado in list_empleados:
             contador += 1
-            print(f"{contador}- {empleado}")
+            print(f"    {contador}- {empleado}")
 
-        an = input("Seleccione empleado para calcularle el aumento de salario: ")
+        an = input("\nSeleccione empleado para calcular su aumento de salario: ")
 
         if an == "0":
             clear()
-            print("\nAcción cancelada\n")
+            print("Acción cancelada\n")
             return False
 
         if an == "" or not an.isdigit() or 0 > int(an) or int(an) > contador:
@@ -288,13 +291,13 @@ def aumento_de_salario_empleado():
         empleado = list_empleados[int(an) - 1]
         break
     clear()
-    print(f"\nAumento de salario para {empleado.nombre} ({empleado.ci}):")
-    print(f"${round(empleado.salario)} -----> ${round(empleado.salario * 1.15)}\n\n")
+    print(f"Aumento de salario para {empleado.nombre.upper()} ({empleado.ci}):")
+    print(f"${round(empleado.salario)} -----> ${round(empleado.salario * 1.15)}")
 
 
 def aumento_de_salario_sector():
     clear()
-    print("Calcular el aumento de salario para el próximo año de todo un sector\n")
+    print("Calcular el aumento de salario de todo el sector para el próximo año")
 
     if len(Sector.dict_sectores.keys()) == 0:
         print("No hay sectores registrados\n")
@@ -311,6 +314,5 @@ def aumento_de_salario_sector():
         salario_total += empleado.salario
 
     clear()
-
-    print(f"\nSalario total del sector {sector.nombre}: ${round(salario_total)}")
-    print(f"Salario total del sector {sector.nombre} con aumento: ${round(salario_total * 1.15)}\n\n")
+    print(f"Aumento de salario para el sector {sector.nombre.upper()}:")
+    print(f"${round(salario_total)} -----> ${round(salario_total * 1.15)}")

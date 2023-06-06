@@ -27,6 +27,10 @@ class Empleado:
     def cargo(self):
         return self._cargo
 
+    @cargo.setter
+    def cargo(self, cargo):
+        self._cargo = cargo
+
     @property
     def salario(self):
         return self._salario

@@ -33,16 +33,19 @@ class Sector:
         self._empleados.append(empleado)
 
         if empleado.cargo == "Jefe de sector":
-            if self._jefe is None:
+            if self._jefe is not None:
+                self._empleados.remove(self._jefe)
+                self._jefe.cargo = None
                 self._jefe = empleado
-                print("\nJefe de sector establecido")
+                print("Jefe de sector modificado\n")
 
-            self._jefe = empleado
-            print("\nJefe de sector modificado")
+            else:
+                self._jefe = empleado
+                print("Jefe de sector establecido\n")
 
         if empleado.cargo == "Team leader":
             self._team_leaders.append(empleado)
-            print("\nNuevo Team leader")
+            print("Nuevo Team leader\n")
 
     def get_puntos(self, mes):
 
