@@ -11,7 +11,7 @@ class Sector:
     dict_sectores = {}
 
     nombre_empresa = "Flin Design"
-#
+
     @property
     def nombre(self):
         return self._nombre
@@ -23,6 +23,10 @@ class Sector:
     @property
     def team_leaders(self):
         return self._team_leaders
+
+    @team_leaders.setter
+    def team_leaders(self, team_leader):
+        self._team_leaders.append(team_leader)
 
     @property
     def empleados(self):

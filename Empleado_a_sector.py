@@ -69,7 +69,10 @@ def asignar_empleado_a_sector(sector=None):
 
         empleado = Empleado.dict_empleados[ci]
         if empleado.sector is not None:
-            empleado.sector.empleados.pop(ci)
+            empleado.sector.empleados.remove(empleado)
+
+            if empleado.cargo is "Team leader":
+                empleado.sector.team_leaders.remove(empleado)
 
         empleado.sector = sector
         sector.empleados = empleado

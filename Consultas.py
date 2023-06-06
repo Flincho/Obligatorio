@@ -188,11 +188,29 @@ def cantidad_de_empleados():
         return True
 
 
+def ranking():
+    ranking, mes = ranking_de_puntos()
+
+    clear()
+    if mes == 13:
+        print(f"Ranking de puntos de todo el año\n")
+
+    else:
+        print(f"Ranking de puntos del mes {mes}\n")
+
+    contador = 1
+    for sec in ranking:
+        print(f"    {contador}- {sec[0].nombre}: {sec[1]} puntos")
+        contador += 1
+
+    print("")
+
+
 def ranking_de_puntos(mes=None):
 
     if mes is None:
         clear()
-        print("Ranking de puntos\n")
+        print("Ranking de puntos")
         while True:
             print("\n0- Cancelar")
             print("13- Todo el año")
