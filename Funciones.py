@@ -21,7 +21,7 @@ def seleccionar_sector():
         print("Sectores:")
 
         for i in range(len(Sector.dict_sectores.keys())):
-            print(f"        {i + 1}- {list(Sector.dict_sectores.keys())[i]}")
+            print(f"    {i + 1}- {list(Sector.dict_sectores.keys())[i]}")
 
         sector = input("\nSeleccione sector: ")
 
@@ -31,7 +31,7 @@ def seleccionar_sector():
             return False
 
         if sector == "" or not sector.isdigit():
-            print("Selección inválida")
+            print("\nSelección inválida")
             continue
 
         if int(sector) in range(1, len(Sector.dict_sectores) + 1):
@@ -39,7 +39,7 @@ def seleccionar_sector():
             return sector
             break
 
-        print("Selección inválida")
+        print("\nSelección inválida")
 
 
 def isfloat(num):
@@ -66,8 +66,8 @@ def tests():
 
 def pedir_ci():
     while True:
-        print("\n0- Cancelar")
-        ci = input("\nIngrese CI: ")
+        print("0- Cancelar")
+        ci = input("Ingrese CI: ")
 
         if ci == "0":
             clear()
@@ -75,7 +75,7 @@ def pedir_ci():
             return False
 
         if len(ci) != 8 or not ci.isdigit():
-            print("CI inválida")
+            print("\nCI inválida\n")
             continue
 
         return int(ci)

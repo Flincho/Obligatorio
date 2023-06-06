@@ -9,6 +9,7 @@ def alta_de_sector():
     while True:
         print("0- Cancelar")
         nombre = input("Ingrese nombre del sector: ")
+        nombre = nombre.strip()
 
         if nombre == "0":
             clear()
@@ -16,7 +17,7 @@ def alta_de_sector():
             return False
 
         if nombre == "":
-            print("Nombre inválido")
+            print("\nNombre inválido\n")
             continue
 
         if nombre in Sector.dict_sectores.keys():
@@ -28,7 +29,7 @@ def alta_de_sector():
         clear()
 
         mensaje = f"Sector {nombre.nombre} dado de alta con éxito"
-        print("\n" + "#" * len(mensaje))
+        print("#" * len(mensaje))
         print(mensaje)
         print("#" * len(mensaje))
 

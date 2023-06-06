@@ -7,10 +7,9 @@ from Consultas import *
 if __name__ == "__main__":
     tests()
     clear()
-    print(f"Bienvenido al software de gestión de {Sector.nombre_empresa.upper()}")
+    print(f"Bienvenido al software de gestión de {Sector.nombre_empresa.upper()}\n")
 
     while True:
-        print("\n")
         print("0- Cerrar programa")
         print("""Opciones:
     1- Alta de empleado
@@ -25,18 +24,19 @@ if __name__ == "__main__":
         if op == "1":
             while True:
                 alta_de_empleado()
-                a = input("""\n1- Registrar otro empleado\nCualquier otra tecla para terminar\n""")
+                a = input("""1- Registrar otro empleado\nCualquier otra tecla para terminar\n""")
 
                 if a == "1":
                     continue
 
                 clear()
                 break
+            continue
 
         if op == "2":
             while True:
                 alta_de_sector()
-                a = input("""\n1- Registrar otro sector\nCualquier otra tecla para terminar\n""")
+                a = input("1- Registrar otro sector\nCualquier otra tecla para terminar\n")
 
                 if a == "1":
                     clear()
@@ -44,12 +44,15 @@ if __name__ == "__main__":
 
                 clear()
                 break
+            continue
 
         if op == "3":
             asignar_empleado_a_sector()
+            continue
 
         if op == "4":
             otorgar_puntos()
+            continue
 
         if op == "5":
             clear()
@@ -70,6 +73,8 @@ if __name__ == "__main__":
                 if an == "1":
                     clear()
                     cantidad_de_empleados()
+                    print("")
+                    continue
 
                 if an == "2":
                     clear()
@@ -90,13 +95,24 @@ if __name__ == "__main__":
                 if an == "3":
                     clear()
                     aumento_de_salario_empleado()
+                    print("")
+                    continue
 
                 if an == "4":
                     clear()
                     aumento_de_salario_sector()
+                    print("")
+                    continue
+
+                clear()
+                print("Opción inválida\n")
+            continue
 
         if op == "0":
             clear()
-            print("\n\nCerrando Programa\n\n")
+            print("Cerrando Programa\n\n")
             print("................................................................................\n\n")
             break
+
+        clear()
+        print("Opción inválida\n")

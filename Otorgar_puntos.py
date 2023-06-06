@@ -3,7 +3,7 @@ from Funciones import *
 
 def otorgar_puntos():
     clear()
-    print("Otorgar de puntos a sector\n")
+    print("Otorgar puntos a sector")
 
     if len(Sector.dict_sectores.keys()) == 0:
         print("No hay sectores registrados\n")
@@ -13,8 +13,7 @@ def otorgar_puntos():
     if sector is False:
         return False
 
-    print(f"\nSector {sector.nombre} seleccionado para otorgar puntos")
-
+    print(f"\nSector {sector.nombre.upper()} seleccionado para otorgar puntos")
 
     while True:
         print("\n0- Cancelar")
@@ -58,6 +57,6 @@ def otorgar_puntos():
 
     mensaje = f"Se otorgaron {puntos} puntos al sector {sector.nombre} en el mes {mes}"
 
-    print("\n" + "#" * len(mensaje))
+    print("#" * len(mensaje))
     print(mensaje)
-    print("#" * len(mensaje), "\n\n")
+    print("#" * len(mensaje), "\n")
