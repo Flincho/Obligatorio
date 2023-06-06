@@ -78,19 +78,8 @@ if __name__ == "__main__":
 
                 if an == "2":
                     clear()
-                    ranking, mes = ranking_de_puntos()
-
-                    clear()
-                    if mes == 13:
-                        print(f"Ranking de puntos de todo el año\n")
-
-                    else:
-                        print(f"Ranking de puntos del mes {mes}\n")
-
-                    for sec in ranking:
-                        print(f"{sec[0].nombre}: {sec[1]} puntos")
-
-                    print("\n")
+                    ranking()
+                    continue
 
                 if an == "3":
                     clear()
