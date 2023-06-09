@@ -42,6 +42,23 @@ def seleccionar_sector():
         print("\nSelección inválida")
 
 
+def pedir_ci():
+    while True:
+        print("0- Cancelar")
+        ci = input("Ingrese CI: ")
+
+        if ci == "0":
+            clear()
+            print("Acción cancelada\n")
+            return False
+
+        if len(ci) != 8 or not ci.isdigit():
+            print("\nCI inválida\n")
+            continue
+
+        return int(ci)
+
+
 def isfloat(num):
     try:
         float(num)
@@ -62,20 +79,3 @@ def tests():
     gc.set_puntos(12, 500)
     gc.set_puntos(4, 660)
     testing.set_puntos(12, 1900)
-
-
-def pedir_ci():
-    while True:
-        print("0- Cancelar")
-        ci = input("Ingrese CI: ")
-
-        if ci == "0":
-            clear()
-            print("Acción cancelada\n")
-            return False
-
-        if len(ci) != 8 or not ci.isdigit():
-            print("\nCI inválida\n")
-            continue
-
-        return int(ci)

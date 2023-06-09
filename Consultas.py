@@ -31,7 +31,7 @@ def cantidad_de_empleados():
             return False
 
         if sector == "" or not sector.isdigit():
-            print("Selección inválida")
+            print("\nSelección inválida")
             continue
 
         if float(sector) in range(1, len(Sector.dict_sectores) + 1):
@@ -43,7 +43,7 @@ def cantidad_de_empleados():
             sector = None
             break
 
-        print("Selección inválida")
+        print("\nSelección inválida")
 
     while True:
         print("\n0- Cancelar")
@@ -58,11 +58,11 @@ def cantidad_de_empleados():
 
         if cargo == "0":
             clear()
-            print("\nConsulta cancelada\n")
+            print("Consulta cancelada\n")
             return False
 
         if not cargo.isdigit() or int(cargo) not in range(1, 6):
-            print("Opción inválida")
+            print("\nOpción inválida")
             continue
 
         if cargo == "1":
@@ -119,7 +119,7 @@ def cantidad_de_empleados():
 
         for empleado in analistas_en_sistemas:
             print(empleado)
-        print("\n")
+        print("")
         return True
 
     if sector is None and cargo is not None:
@@ -169,7 +169,7 @@ def cantidad_de_empleados():
 
         for empleado in analistas_en_sistemas:
             print(empleado)
-
+        print("")
         return True
 
     if sector is not None and cargo is not None:
@@ -182,14 +182,20 @@ def cantidad_de_empleados():
         clear()
         print(f"Hay {cant} empleado/s en el sector {sector.nombre} con el cargo {cargo}\n")
 
+        if len(general) == 0:
+            return True
+
         for empleado in general:
             print(empleado)
-        print("\n")
+        print("")
         return True
 
 
 def ranking():
     ranking, mes = ranking_de_puntos()
+
+    if ranking is False:
+        return False
 
     clear()
     if mes == 13:
@@ -200,7 +206,7 @@ def ranking():
 
     contador = 1
     for sec in ranking:
-        print(f"    {contador}- {sec[0].nombre}: {sec[1]} puntos")
+        print(f"    {contador} - {sec[0].nombre}: {sec[1]} puntos")
         contador += 1
 
     print("")
@@ -222,7 +228,7 @@ def ranking_de_puntos(mes=None):
                 return False, 0
 
             if mes == "" or not mes.isdigit() or len(mes) > 2 or (0 > int(mes) or int(mes) > 13):
-                print("Mes inválido")
+                print("\nMes inválido")
                 continue
 
             if mes[0] == "0":
@@ -249,7 +255,7 @@ def aumento_de_salario_empleado():
     print("Calcular el aumento de salario de un empleado para el próximo año")
 
     if len(Sector.dict_sectores.keys()) == 0:
-        print("No hay sectores registrados\n")
+        print("\nNo hay sectores registrados\n")
         return False
 
     ranking, mes = ranking_de_puntos(13)
@@ -262,7 +268,7 @@ def aumento_de_salario_empleado():
     list_empleados = [[], [], [], []]
 
     if sector.empleados == []:
-        print(f"No hay empleados en el sector {sector.nombre}")
+        print(f"\nNo hay empleados en el sector {sector.nombre}")
         return False
 
     for empleado in sector.empleados:
@@ -322,6 +328,9 @@ def aumento_de_salario_sector():
         return False
 
     sector = seleccionar_sector()
+
+    if sector is False:
+        return False
 
     if sector.empleados == []:
         print(f"\nNo hay empleados en el sector {sector.nombre}\n")

@@ -21,11 +21,11 @@ def otorgar_puntos():
 
         if mes == "0":
             clear()
-            print("\nAcción cancelada\n")
+            print("Acción cancelada\n")
             return False
 
-        if mes == "" or not mes.isdigit() or len(mes) > 2 or (0 > int(mes) or int(mes) > 13):
-            print("Mes inválido")
+        if mes == "" or not mes.isdigit() or len(mes) > 2 or (0 > int(mes) or int(mes) > 12):
+            print("\nMes inválido")
             continue
 
         if mes[0] == "0":
@@ -41,7 +41,7 @@ def otorgar_puntos():
 
         if puntos == "0":
             clear()
-            print("\nAcción cancelada\n")
+            print("Acción cancelada\n")
             return False
 
         if puntos == "" or not isfloat(puntos) or float(puntos) <= 0:

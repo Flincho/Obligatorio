@@ -10,13 +10,13 @@ if __name__ == "__main__":
     print(f"Bienvenido al software de gestión de {Sector.nombre_empresa.upper()}\n")
 
     while True:
-        print("0- Cerrar programa")
         print("""Opciones:
     1- Alta de empleado
     2- Alta de sector
     3- Asignar empleado a sector
     4- Otorgar puntos a sector
     5- Realizar consultas
+    6- Cerrar programa
     """)
 
         op = input("Ingrese una opción: ")
@@ -73,7 +73,6 @@ if __name__ == "__main__":
                 if an == "1":
                     clear()
                     cantidad_de_empleados()
-                    print("")
                     continue
 
                 if an == "2":
@@ -90,14 +89,13 @@ if __name__ == "__main__":
                 if an == "4":
                     clear()
                     aumento_de_salario_sector()
-                    print("")
                     continue
 
                 clear()
                 print("Opción inválida\n")
             continue
 
-        if op == "0":
+        if op == "6":
             clear()
             print("Cerrando Programa\n\n")
             print("................................................................................\n\n")
